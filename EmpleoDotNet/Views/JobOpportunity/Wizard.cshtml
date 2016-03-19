@@ -11,19 +11,19 @@
     @using (Html.BeginForm("Wizard", "JobOpportunity", FormMethod.Post, new {role = "form"}))
     {
         @Html.AntiForgeryToken()
-        <div>
-            <span class="h2 section-title"></span>
+            <span class="h3 section-title"></span>
+        <section style="padding-bottom: 0">
             <hr />
             <div class="tab section-1">1</div>
             <div class="tab section-2">2</div>
             <div class="tab section-3">3</div>
-        </div>
+        </section>
         <div id="wizard" class="owl-carousel owl-theme">
             <div class="item" data-parsley-group="business-details">
                 <div class="form-group" id="company-name-group">
                     @Html.LabelFor(m => m.CompanyName)
                     @Html.TextBoxFor(m => m.CompanyName, new {@class = "form-control", placeholder = "CompanyX, SRL.", required="", @data_parsley_group= "business-details"})
-                    <span><b>Tip:</b> Los mejores candidatos tienden a hacer caso omiso de propuestas an&oacute;nimas</span>
+                    <span><b>Tip:</b> Los mejores candidatos tienden a hacer caso omiso de propuestas anónimas</span>
                     @Html.ValidationMessageFor(m => m.CompanyName)
                 </div>
                 <div class="form-group" id="company-email-group">
@@ -35,8 +35,8 @@
                     @Html.LabelFor(m => m.CompanyUrl)
                     @Html.TextBoxFor(m => m.CompanyUrl, new {@class = "form-control", type="url", @data_parsley_type="url", placeholder = "companyx.com", @data_parsley_group = "business-details" })
                     <span>
-                        <b>Tip:</b> Muchos aplicantes visitar&aacute;n tu sitio web y lo tomar&aacute;n 
-                        como referencia antes de decidirse por t&iacute;. Si tu empresa no tiene un sitio web 
+                        <b>Tip:</b> Muchos aplicantes visitarán tu sitio web y lo tomarán 
+                        como referencia antes de decidirse por tí. Si tu empresa no tiene un sitio web 
                         o crees que necesita unas mejoras, considera buscar un web developer en
                          <a href="@Url.Action("Index", "Home")">emplea.do</a>
                     </span>
@@ -45,7 +45,7 @@
                 <div class="form-group" id="company-logo-group">
                     @Html.LabelFor(m => m.CompanyLogoUrl)
                     @Html.TextBoxFor(m => m.CompanyLogoUrl, new {@class = "form-control", type = "url", @data_parsley_type = "url", placeholder = "http://companyx.com/logo.png"})
-                    <span>Asegurate de que el servidor donde est&eacute; alojado el logo acepte hotlinks. 
+                    <span>Asegurate de que el servidor donde esté alojado el logo acepte hotlinks. 
                     Si no sabes que es eso, no te preocupes, sube el logo a <a href="https://imgur.com" target="_blank">imgur</a> y pega la url aqu&iacute;</span>
                     @Html.ValidationMessageFor(m => m.CompanyLogoUrl)
                 </div>
@@ -84,7 +84,7 @@
                     @Html.TextAreaFor(m => m.Description, new { @class = "form-control textarea", @data_parsley_group="job-details", @data_parsley_errors_container="#description_errors", required="" })
                     @Html.ValidationMessageFor(m => m.Description)
                     <span><b>Tip:</b> Se lo mas explicito posible, si eres de recursos humanos consulta con una persona de 
-                    tecnolog&iacute;a sobre cuales son los requerimientos t&eacute;cnicos.</span>
+                    tecnología sobre cuales son los requerimientos técnicos.</span>
                     <span id="description_errors" class="danger"></span>
                 </div>
                 <a class="btn-prev btn btn-warning btn-lg">Anterior</a>
@@ -93,7 +93,7 @@
             </div>
             <div class="item">
                 <p>Si no sabes que es puedes 
-                <a href="http://local.joelonsoftware.com/wiki/El_Test_de_Joel:_12_pasos_hacia_un_c%C3%B3digo_mejor" target="_blank">leer aqu&iacute;</a>.
+                <a href="http://local.joelonsoftware.com/wiki/El_Test_de_Joel:_12_pasos_hacia_un_c%C3%B3digo_mejor" target="_blank">leer aquí</a>.
                     En resumen, es un cuestionario para medir la calidad del equipo de desarrollo de tu empresa. Coteja las opciones que apliquen.
                     <br/>**Este paso es opcional y solo aplica para posiciones relacionadas al Desarrollo de Software</p>
                 <div class="form-group">

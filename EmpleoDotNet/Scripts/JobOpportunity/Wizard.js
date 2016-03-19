@@ -6,14 +6,15 @@ var Wizard = function () {
     var owl = $("#wizard").owlCarousel({
         slideSpeed: 300,
         paginationSpeed: 400,
-        items: 1,
-        itemsDesktop: false,
-        itemsDesktopSmall: false,
-        itemsTablet: false,
-        itemsMobile: false,
-        dots: false,
-        touchDrag: false,
-        mouseDrag: false
+        //items: 1,
+        //itemsDesktop: false,
+        //itemsDesktopSmall: false,
+        //itemsTablet: false,
+        //itemsMobile: false,
+        //dots: false,
+        //touchDrag: false,
+        //mouseDrag: false
+        singleItem: true
     });
 
     var validateScreen = function (callback) {
@@ -36,19 +37,19 @@ var Wizard = function () {
     return {
         next: function () {
             validateScreen(function () {
-                owl.trigger('next');
+                owl.next();
                 currentSection++;
                 changeActiveTab();
             });
         },
 
         previous: function () {
-            owl.trigger('prev');
+            owl.prev();
             currentSection--;
             changeActiveTab();
         },
 
-        submitForm: function() {
+        submitForm: function(e) {
             if (!$('form').parsley().validate()) {
                 e.preventDefault();
             }
@@ -59,10 +60,10 @@ var Wizard = function () {
                 e.preventDefault();
             }
         },
-        goNextOnEnter: function () {
+        goNextOnEnter: function (e) {
             if (e.keyCode === 13) {
                 validateScreen(function () {
-                    owl.trigger('next');
+                    owl.next();
                 });
             }
         }
@@ -71,9 +72,9 @@ var Wizard = function () {
 
 $(function () {
     var wizard = new Wizard();
-    $('form').submit(function (e) { wizard.submitForm(); });
+    $('form').submit(function (e) { wizard.submitForm(e); });
     $(window).keydown(function (e) { wizard.preventEnter(e); });
-    $("input").keydown(function (e) { wizard.goNextOnEnter(); });
+    $("input").keydown(function (e) { wizard.goNextOnEnter(e); });
     $(".btn-next").click(function () { wizard.next();});
     $(".btn-prev").click(function () { wizard.previous(); });
 });

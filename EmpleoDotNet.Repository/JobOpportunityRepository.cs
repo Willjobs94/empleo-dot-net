@@ -17,7 +17,6 @@ namespace EmpleoDotNet.Repository
         public List<JobOpportunity> GetAllJobOpportunities()
         {
             var jobOpportunities = DbSet.Include(x => x.JobOpportunityLocation).OrderByDescending(x => x.PublishedDate);
-            
             return jobOpportunities.ToList();
         }
 
